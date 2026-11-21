@@ -330,7 +330,7 @@ do_install() {
 	export DESTDIR
 	export SIGN_FILE="${XBPS_WRAPPERDIR}/sign-file sha512 ${wrksrc}/certs/signing_key.pem ${wrksrc}/certs/signing_key.x509"
 	find ./ -name '*.ko' -print0 | \
-		xargs -0r -n1 -P ${XBPS_MAKEJOBS} ${FILESDIR}/mv-debug
+		xargs -0r -n1 -P ${XBPS_MAKEJOBS} sh ${FILESDIR}/mv-debug
 	)
 	# ... and run depmod again.
 	depmod -b ${DESTDIR}/usr -F System.map ${_kernver}
