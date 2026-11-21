@@ -17,7 +17,7 @@ A hardware-specific Linux kernel package for the HP Pavilion x360 Convertible T0
 
 GitHub Actions builds the Void XBPS package on an Ubuntu-hosted runner. The runner is only the build host; kernel code is compiled for the target device.
 
-The Void Linux `linux7.3` package recipe is used as the packaging baseline. The workflow overlays this repository's package recipe and custom x86_64 configuration into `void-packages`, bootstraps `x86_64-musl`, and builds the kernel and headers packages.
+The Void Linux `linux7.3` package recipe is used as the packaging baseline. The upstream `mv-debug` module-symbol helper is included locally and invoked through `sh`, so the build does not depend on Git preserving executable mode for that file. The workflow overlays this repository's package recipe and custom x86_64 configuration into `void-packages`, bootstraps `x86_64-musl`, and builds the kernel and headers packages.
 
 ### Skylake tuning
 
