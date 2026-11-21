@@ -66,6 +66,8 @@ jobs:
           bash -n srcpkgs/linux7.3/template
           sh -n srcpkgs/linux7.3/files/validate-config.sh
           sh -n scripts/publish-release.sh
+          sh -n srcpkgs/linux7.3/files/mv-debug
+          test -s srcpkgs/linux7.3/files/mv-debug
           sh srcpkgs/linux7.3/files/validate-config.sh srcpkgs/linux7.3/files/x86_64-dotconfig-custom
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "revision=$revision" >> "$GITHUB_OUTPUT"
