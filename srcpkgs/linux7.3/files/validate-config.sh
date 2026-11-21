@@ -16,7 +16,9 @@ require_value() {
 
 require_disabled() {
     symbol="$1"
-    if ! grep -Fqx "# CONFIG_${symbol} is not set" "$config"; then
+    # Hidden Kconfig symbols can be omitted from .config entirely when their
+    # parent dependency is disabled. Treat absence as n; reject y or m.
+    if grep -Eq "^CONFIG_${symbol}=(y|m|[1-9])" "$config"; then
         echo "CONFIG_${symbol} must be disabled" >&2
         grep -E "^(CONFIG_${symbol}=|# CONFIG_${symbol} is not set)" "$config" >&2 || true
         exit 1
