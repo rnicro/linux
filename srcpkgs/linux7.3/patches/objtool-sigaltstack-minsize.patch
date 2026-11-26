@@ -18,7 +18,7 @@ diff --git a/tools/objtool/signal.c b/tools/objtool/signal.c
 index af5c65c0fb2d..8f86c79adbfb 100644
 --- a/tools/objtool/signal.c
 +++ b/tools/objtool/signal.c
-@@ -9,11 +9,16 @@
+@@ -9,10 +9,15 @@
  #include <unistd.h>
  #include <sys/resource.h>
 +#include <sys/auxv.h>
@@ -34,7 +34,7 @@ index af5c65c0fb2d..8f86c79adbfb 100644
  static unsigned long stack_limit;
  
  static bool is_stack_overflow(void *fault_addr)
-@@ -101,17 +106,26 @@ int init_signal_handler(void)
+@@ -101,18 +106,26 @@ int init_signal_handler(void)
  {
  	int signals[] = {SIGSEGV, SIGBUS, SIGILL, SIGABRT};
  	struct sigaction sa;
