@@ -79,7 +79,7 @@ jobs:
             echo "- HP Pavilion x360 T0Y58PA"
             echo "- Intel Core i3-6100U / Skylake"
             echo "- x86_64-musl"
-            echo "- GCC kernel build with `-march=skylake -mtune=skylake`"
+            echo '- GCC kernel build with `-march=skylake -mtune=skylake`'
             echo "- GitHub-hosted build runner; no compilation on the laptop"
           } >> "$GITHUB_STEP_SUMMARY"
 
